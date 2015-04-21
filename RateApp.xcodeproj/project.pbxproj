@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C01771F61AE6D9050011B373 /* NSDate+RateApp.m in Sources */ = {isa = PBXBuildFile; fileRef = C01771F51AE6D9050011B373 /* NSDate+RateApp.m */; };
+		C069BDC91AE679C3000F89F0 /* UIColor+RateApp.m in Sources */ = {isa = PBXBuildFile; fileRef = C069BDC81AE679C3000F89F0 /* UIColor+RateApp.m */; };
 		C06E3E061AE64D3100F944A7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C06E3E051AE64D3100F944A7 /* main.m */; };
-		C06E3E091AE64D3100F944A7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C06E3E081AE64D3100F944A7 /* AppDelegate.m */; };
-		C06E3E0C1AE64D3200F944A7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C06E3E0B1AE64D3200F944A7 /* ViewController.m */; };
 		C06E3E0F1AE64D3200F944A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C06E3E0D1AE64D3200F944A7 /* Main.storyboard */; };
 		C06E3E111AE64D3200F944A7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C06E3E101AE64D3200F944A7 /* Images.xcassets */; };
 		C06E3E141AE64D3200F944A7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C06E3E121AE64D3200F944A7 /* LaunchScreen.xib */; };
 		C06E3E201AE64D3200F944A7 /* RateAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C06E3E1F1AE64D3200F944A7 /* RateAppTests.m */; };
+		C06E3E301AE64EB600F944A7 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C06E3E2D1AE64EB600F944A7 /* CalendarViewController.m */; };
+		C06E3E361AE64EF900F944A7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C06E3E351AE64EF900F944A7 /* AppDelegate.m */; };
+		C06E3E391AE6500F00F944A7 /* RAPickerTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C06E3E381AE6500F00F944A7 /* RAPickerTableView.m */; };
+		C06E3E3C1AE65CEC00F944A7 /* UIView+Border.m in Sources */ = {isa = PBXBuildFile; fileRef = C06E3E3B1AE65CEC00F944A7 /* UIView+Border.m */; };
+		C06E3E401AE65F7F00F944A7 /* RAPickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C06E3E3F1AE65F7F00F944A7 /* RAPickerTableViewCell.m */; };
+		C06E3E421AE65F9000F944A7 /* RAPickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C06E3E411AE65F9000F944A7 /* RAPickerTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,19 +33,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C01771F41AE6D9050011B373 /* NSDate+RateApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+RateApp.h"; sourceTree = "<group>"; };
+		C01771F51AE6D9050011B373 /* NSDate+RateApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+RateApp.m"; sourceTree = "<group>"; };
+		C069BDC71AE679C3000F89F0 /* UIColor+RateApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RateApp.h"; sourceTree = "<group>"; };
+		C069BDC81AE679C3000F89F0 /* UIColor+RateApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RateApp.m"; sourceTree = "<group>"; };
 		C06E3E001AE64D3100F944A7 /* RateApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RateApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C06E3E041AE64D3100F944A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C06E3E051AE64D3100F944A7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C06E3E071AE64D3100F944A7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C06E3E081AE64D3100F944A7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C06E3E0A1AE64D3100F944A7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C06E3E0B1AE64D3200F944A7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C06E3E0E1AE64D3200F944A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C06E3E101AE64D3200F944A7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C06E3E131AE64D3200F944A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		C06E3E191AE64D3200F944A7 /* RateAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RateAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C06E3E1E1AE64D3200F944A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C06E3E1F1AE64D3200F944A7 /* RateAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RateAppTests.m; sourceTree = "<group>"; };
+		C06E3E2C1AE64EB600F944A7 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
+		C06E3E2D1AE64EB600F944A7 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
+		C06E3E341AE64EF900F944A7 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C06E3E351AE64EF900F944A7 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C06E3E371AE6500F00F944A7 /* RAPickerTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAPickerTableView.h; sourceTree = "<group>"; };
+		C06E3E381AE6500F00F944A7 /* RAPickerTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAPickerTableView.m; sourceTree = "<group>"; };
+		C06E3E3A1AE65CEC00F944A7 /* UIView+Border.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Border.h"; sourceTree = "<group>"; };
+		C06E3E3B1AE65CEC00F944A7 /* UIView+Border.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Border.m"; sourceTree = "<group>"; };
+		C06E3E3E1AE65F7F00F944A7 /* RAPickerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAPickerTableViewCell.h; sourceTree = "<group>"; };
+		C06E3E3F1AE65F7F00F944A7 /* RAPickerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAPickerTableViewCell.m; sourceTree = "<group>"; };
+		C06E3E411AE65F9000F944A7 /* RAPickerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RAPickerTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +98,10 @@
 		C06E3E021AE64D3100F944A7 /* RateApp */ = {
 			isa = PBXGroup;
 			children = (
-				C06E3E071AE64D3100F944A7 /* AppDelegate.h */,
-				C06E3E081AE64D3100F944A7 /* AppDelegate.m */,
-				C06E3E0A1AE64D3100F944A7 /* ViewController.h */,
-				C06E3E0B1AE64D3200F944A7 /* ViewController.m */,
+				C06E3E331AE64EF900F944A7 /* Application */,
+				C06E3E321AE64EC500F944A7 /* Services */,
+				C06E3E311AE64EBE00F944A7 /* Categories */,
+				C06E3E2A1AE64EB600F944A7 /* MVC */,
 				C06E3E0D1AE64D3200F944A7 /* Main.storyboard */,
 				C06E3E101AE64D3200F944A7 /* Images.xcassets */,
 				C06E3E121AE64D3200F944A7 /* LaunchScreen.xib */,
@@ -117,6 +134,82 @@
 				C06E3E1E1AE64D3200F944A7 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C06E3E2A1AE64EB600F944A7 /* MVC */ = {
+			isa = PBXGroup;
+			children = (
+				C06E3E2B1AE64EB600F944A7 /* Controllers */,
+				C06E3E2E1AE64EB600F944A7 /* Models */,
+				C06E3E2F1AE64EB600F944A7 /* Views */,
+			);
+			path = MVC;
+			sourceTree = "<group>";
+		};
+		C06E3E2B1AE64EB600F944A7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C06E3E2C1AE64EB600F944A7 /* CalendarViewController.h */,
+				C06E3E2D1AE64EB600F944A7 /* CalendarViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C06E3E2E1AE64EB600F944A7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C06E3E2F1AE64EB600F944A7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C06E3E3D1AE65F5E00F944A7 /* Cells */,
+				C06E3E371AE6500F00F944A7 /* RAPickerTableView.h */,
+				C06E3E381AE6500F00F944A7 /* RAPickerTableView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C06E3E311AE64EBE00F944A7 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				C06E3E3A1AE65CEC00F944A7 /* UIView+Border.h */,
+				C06E3E3B1AE65CEC00F944A7 /* UIView+Border.m */,
+				C069BDC71AE679C3000F89F0 /* UIColor+RateApp.h */,
+				C069BDC81AE679C3000F89F0 /* UIColor+RateApp.m */,
+				C01771F41AE6D9050011B373 /* NSDate+RateApp.h */,
+				C01771F51AE6D9050011B373 /* NSDate+RateApp.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		C06E3E321AE64EC500F944A7 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Services;
+			path = Categories/Services;
+			sourceTree = "<group>";
+		};
+		C06E3E331AE64EF900F944A7 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				C06E3E341AE64EF900F944A7 /* AppDelegate.h */,
+				C06E3E351AE64EF900F944A7 /* AppDelegate.m */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		C06E3E3D1AE65F5E00F944A7 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C06E3E3E1AE65F7F00F944A7 /* RAPickerTableViewCell.h */,
+				C06E3E3F1AE65F7F00F944A7 /* RAPickerTableViewCell.m */,
+				C06E3E411AE65F9000F944A7 /* RAPickerTableViewCell.xib */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +294,7 @@
 			files = (
 				C06E3E0F1AE64D3200F944A7 /* Main.storyboard in Resources */,
 				C06E3E141AE64D3200F944A7 /* LaunchScreen.xib in Resources */,
+				C06E3E421AE65F9000F944A7 /* RAPickerTableViewCell.xib in Resources */,
 				C06E3E111AE64D3200F944A7 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,8 +313,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C06E3E0C1AE64D3200F944A7 /* ViewController.m in Sources */,
-				C06E3E091AE64D3100F944A7 /* AppDelegate.m in Sources */,
+				C06E3E361AE64EF900F944A7 /* AppDelegate.m in Sources */,
+				C06E3E3C1AE65CEC00F944A7 /* UIView+Border.m in Sources */,
+				C01771F61AE6D9050011B373 /* NSDate+RateApp.m in Sources */,
+				C06E3E401AE65F7F00F944A7 /* RAPickerTableViewCell.m in Sources */,
+				C069BDC91AE679C3000F89F0 /* UIColor+RateApp.m in Sources */,
+				C06E3E301AE64EB600F944A7 /* CalendarViewController.m in Sources */,
+				C06E3E391AE6500F00F944A7 /* RAPickerTableView.m in Sources */,
 				C06E3E061AE64D3100F944A7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,6 +513,7 @@
 				C06E3E251AE64D3200F944A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C06E3E261AE64D3200F944A7 /* Build configuration list for PBXNativeTarget "RateAppTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +522,7 @@
 				C06E3E281AE64D3200F944A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
