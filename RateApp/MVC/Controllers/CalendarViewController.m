@@ -8,8 +8,12 @@
 
 #import "CalendarViewController.h"
 #import "RAPickerTableView.h"
+#import "UIColor+RateApp.h"
+#import "NSDate+RateApp.h"
 
 @interface CalendarViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *rateButton;
+- (IBAction)rate:(id)sender;
 
 @end
 
@@ -21,14 +25,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-
     NSMutableArray * dateArray = [NSMutableArray array];
     NSCalendar * cal = [NSCalendar currentCalendar];
     NSDateComponents *startComponents = [[NSDateComponents alloc] init];
     [startComponents setDay:1];
     [startComponents setYear:2013];
 
-    for(NSUInteger day = 1; day < 365; day++) {
+    for(NSUInteger day = 1; day <= 365; day++) {
         [startComponents setDay:day];
         [dateArray addObject:[cal dateFromComponents:startComponents]];
     }
@@ -36,7 +39,18 @@
 
     _pickerView = [[RAPickerTableView alloc] initWithFrame:CGRectZero];
     _pickerView.dataSource = self;
+    _pickerView.delegate = self;
+
     [self.view addSubview:_pickerView];
+
+    self.rateButton.layer.cornerRadius = self.rateButton.bounds.size.height / 2;
+    self.rateButton.layer.borderColor = [UIColor colorRateAppBlue].CGColor;
+    self.rateButton.layer.borderWidth = 1.0f;
+    [self.rateButton setTitleColor:[UIColor colorRateAppBlue] forState:UIControlStateNormal];
+    [self.rateButton setTitleColor:[UIColor colorRateAppTextGray] forState:UIControlStateDisabled];
+    self.rateButton.backgroundColor = [UIColor colorRateAppButtonBackground];
+    [self.view bringSubviewToFront:self.rateButton];
+
 }
 
 - (void)viewDidLayoutSubviews
@@ -44,6 +58,12 @@
     [super viewDidLayoutSubviews];
     [_pickerView setFrame:self.view.frame];
     [_pickerView needsUpdateConstraints];
+}
+
+- (IBAction)rate:(id)sender
+{
+    NSString *stringFromDate = [_arrDays[_pickerView.selectedIndexPathRow] stringForCbrRequest];
+    NSLog(@"%@", stringFromDate);
 }
 
 #pragma-mark RAPickerTableViewDataSource
@@ -64,5 +84,20 @@
     return cell;
 }
 
+#pragma-mark RAPickerTableViewDelegate
+
+- (void)scrollViewDidEndDraggingInPickerTableView:(RAPickerTableView *)pickerTableView
+{
+    NSLog(@"scrollViewDidEndDraggingInPickerTableView");
+    self.rateButton.enabled = NO;
+    self.rateButton.layer.borderColor = [UIColor colorRateAppTextGray].CGColor;
+}
+
+- (void)scrollViewDidEndDeceleratingInPickerTableView:(RAPickerTableView *)pickerTableView
+{
+    NSLog(@"scrollViewDidEndDeceleratingInPickerTableView");
+    self.rateButton.enabled = YES;
+    self.rateButton.layer.borderColor = [UIColor colorRateAppBlue].CGColor;
+}
 
 @end

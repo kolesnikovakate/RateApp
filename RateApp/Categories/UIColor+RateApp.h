@@ -14,5 +14,6 @@
 + (UIColor *)colorRateAppBlue;
 + (UIColor *)colorRateAppRed;
 + (UIColor *)colorRateAppTextGray;
++ (UIColor *)colorRateAppButtonBackground;
 
 @end

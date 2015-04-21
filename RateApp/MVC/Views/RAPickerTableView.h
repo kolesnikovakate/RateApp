@@ -16,10 +16,16 @@
 - (RAPickerTableViewCell *)pickerTableView:(RAPickerTableView *)pickerTableView cellAtIndexPath:(NSIndexPath *)indexPath;
 @end
 
+@protocol RAPickerTableViewDelegate < NSObject >
+- (void)scrollViewDidEndDraggingInPickerTableView:(RAPickerTableView *)pickerTableView;
+- (void)scrollViewDidEndDeceleratingInPickerTableView:(RAPickerTableView *)pickerTableView;
+@end
+
 @interface RAPickerTableView : UIView < UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource >
 
 @property (nonatomic, strong) UITableView *pickerTableView;
 @property (nonatomic, weak) id <RAPickerTableViewDataSource> dataSource;
+@property (nonatomic, weak) id <RAPickerTableViewDelegate> delegate;
 @property (nonatomic, assign, readonly) NSInteger selectedIndexPathRow;
 
 @end
