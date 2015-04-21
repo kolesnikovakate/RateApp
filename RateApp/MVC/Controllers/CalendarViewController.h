@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RAPickerTableView.h"
 
-@interface CalendarViewController : UIViewController
+@interface CalendarViewController : UIViewController < RAPickerTableViewDataSource >
 
 
 @end
