@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C01771F61AE6D9050011B373 /* NSDate+RateApp.m in Sources */ = {isa = PBXBuildFile; fileRef = C01771F51AE6D9050011B373 /* NSDate+RateApp.m */; };
+		C05ACBA71AE790A200947FB7 /* RAXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C05ACBA61AE790A200947FB7 /* RAXMLParser.m */; };
 		C069BDC91AE679C3000F89F0 /* UIColor+RateApp.m in Sources */ = {isa = PBXBuildFile; fileRef = C069BDC81AE679C3000F89F0 /* UIColor+RateApp.m */; };
 		C06E3E061AE64D3100F944A7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C06E3E051AE64D3100F944A7 /* main.m */; };
 		C06E3E0F1AE64D3200F944A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C06E3E0D1AE64D3200F944A7 /* Main.storyboard */; };
@@ -20,6 +21,8 @@
 		C06E3E3C1AE65CEC00F944A7 /* UIView+Border.m in Sources */ = {isa = PBXBuildFile; fileRef = C06E3E3B1AE65CEC00F944A7 /* UIView+Border.m */; };
 		C06E3E401AE65F7F00F944A7 /* RAPickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C06E3E3F1AE65F7F00F944A7 /* RAPickerTableViewCell.m */; };
 		C06E3E421AE65F9000F944A7 /* RAPickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C06E3E411AE65F9000F944A7 /* RAPickerTableViewCell.xib */; };
+		C0B6EA671AE7829D0060329A /* RAXMLParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B6EA661AE7829D0060329A /* RAXMLParserDelegate.m */; };
+		C0B6EA6A1AE789C90060329A /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B6EA691AE789C90060329A /* Currency.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,8 @@
 /* Begin PBXFileReference section */
 		C01771F41AE6D9050011B373 /* NSDate+RateApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+RateApp.h"; sourceTree = "<group>"; };
 		C01771F51AE6D9050011B373 /* NSDate+RateApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+RateApp.m"; sourceTree = "<group>"; };
+		C05ACBA51AE790A200947FB7 /* RAXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RAXMLParser.h; path = RateApp/Services/RAXMLParser.h; sourceTree = SOURCE_ROOT; };
+		C05ACBA61AE790A200947FB7 /* RAXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RAXMLParser.m; path = RateApp/Services/RAXMLParser.m; sourceTree = SOURCE_ROOT; };
 		C069BDC71AE679C3000F89F0 /* UIColor+RateApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RateApp.h"; sourceTree = "<group>"; };
 		C069BDC81AE679C3000F89F0 /* UIColor+RateApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RateApp.m"; sourceTree = "<group>"; };
 		C06E3E001AE64D3100F944A7 /* RateApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RateApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +62,10 @@
 		C06E3E3E1AE65F7F00F944A7 /* RAPickerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAPickerTableViewCell.h; sourceTree = "<group>"; };
 		C06E3E3F1AE65F7F00F944A7 /* RAPickerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAPickerTableViewCell.m; sourceTree = "<group>"; };
 		C06E3E411AE65F9000F944A7 /* RAPickerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RAPickerTableViewCell.xib; sourceTree = "<group>"; };
+		C0B6EA651AE7829D0060329A /* RAXMLParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RAXMLParserDelegate.h; path = RateApp/Services/RAXMLParserDelegate.h; sourceTree = SOURCE_ROOT; };
+		C0B6EA661AE7829D0060329A /* RAXMLParserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RAXMLParserDelegate.m; path = RateApp/Services/RAXMLParserDelegate.m; sourceTree = SOURCE_ROOT; };
+		C0B6EA681AE789C90060329A /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Currency.h; sourceTree = "<group>"; };
+		C0B6EA691AE789C90060329A /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Currency.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +167,8 @@
 		C06E3E2E1AE64EB600F944A7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C0B6EA681AE789C90060329A /* Currency.h */,
+				C0B6EA691AE789C90060329A /* Currency.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -188,6 +199,10 @@
 		C06E3E321AE64EC500F944A7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				C0B6EA651AE7829D0060329A /* RAXMLParserDelegate.h */,
+				C0B6EA661AE7829D0060329A /* RAXMLParserDelegate.m */,
+				C05ACBA51AE790A200947FB7 /* RAXMLParser.h */,
+				C05ACBA61AE790A200947FB7 /* RAXMLParser.m */,
 			);
 			name = Services;
 			path = Categories/Services;
@@ -314,9 +329,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C06E3E361AE64EF900F944A7 /* AppDelegate.m in Sources */,
+				C0B6EA671AE7829D0060329A /* RAXMLParserDelegate.m in Sources */,
 				C06E3E3C1AE65CEC00F944A7 /* UIView+Border.m in Sources */,
 				C01771F61AE6D9050011B373 /* NSDate+RateApp.m in Sources */,
+				C0B6EA6A1AE789C90060329A /* Currency.m in Sources */,
 				C06E3E401AE65F7F00F944A7 /* RAPickerTableViewCell.m in Sources */,
+				C05ACBA71AE790A200947FB7 /* RAXMLParser.m in Sources */,
 				C069BDC91AE679C3000F89F0 /* UIColor+RateApp.m in Sources */,
 				C06E3E301AE64EB600F944A7 /* CalendarViewController.m in Sources */,
 				C06E3E391AE6500F00F944A7 /* RAPickerTableView.m in Sources */,

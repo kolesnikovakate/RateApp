@@ -10,6 +10,7 @@
 #import "RAPickerTableView.h"
 #import "UIColor+RateApp.h"
 #import "NSDate+RateApp.h"
+#import "RAXMLParser.h"
 
 @interface CalendarViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *rateButton;
@@ -62,8 +63,9 @@
 
 - (IBAction)rate:(id)sender
 {
-    NSString *stringFromDate = [_arrDays[_pickerView.selectedIndexPathRow] stringForCbrRequest];
-    NSLog(@"%@", stringFromDate);
+    NSDate *selectedDate = _arrDays[_pickerView.selectedIndexPathRow];
+    NSArray *array = [RAXMLParser getCurrencyArrayByDate:selectedDate];
+    NSLog(@"%@", array);
 }
 
 #pragma-mark RAPickerTableViewDataSource
