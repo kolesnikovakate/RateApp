@@ -10,6 +10,7 @@
 #import "RAXMLParser.h"
 #import "UIColor+RateApp.h"
 #import "SVProgressHUD.h"
+#import "CurrencyHelper.h"
 
 @implementation RateViewController
 
@@ -37,7 +38,10 @@
 
 - (void)setUpDataFromArray:(NSArray *)dataArray
 {
-    NSLog(@"%@", dataArray);
+    Currency *usd = [CurrencyHelper findCurrencyWithCharCode:kRAUSDCharCode inArray:dataArray];
+    Currency *eur = [CurrencyHelper findCurrencyWithCharCode:kRAEURCharCode inArray:dataArray];
+    NSLog(@"%@ %@", usd.nominal, usd.value);
+    NSLog(@"%@ %@", eur.nominal, eur.value);
 }
 
 @end

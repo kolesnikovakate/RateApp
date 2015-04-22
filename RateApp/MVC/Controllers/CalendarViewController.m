@@ -100,14 +100,12 @@
 
 - (void)scrollViewDidEndDraggingInPickerTableView:(RAPickerTableView *)pickerTableView
 {
-    NSLog(@"scrollViewDidEndDraggingInPickerTableView");
     self.rateButton.enabled = NO;
     self.rateButton.layer.borderColor = [UIColor colorRateAppTextGray].CGColor;
 }
 
 - (void)scrollViewDidEndDeceleratingInPickerTableView:(RAPickerTableView *)pickerTableView
 {
-    NSLog(@"scrollViewDidEndDeceleratingInPickerTableView");
     self.rateButton.enabled = YES;
     self.rateButton.layer.borderColor = [UIColor colorRateAppBlue].CGColor;
 }

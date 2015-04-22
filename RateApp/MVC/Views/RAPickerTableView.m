@@ -99,7 +99,9 @@
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    if ([scrollView isDragging]) {
+    if (![scrollView isDragging]) {
+        [self centerValueForScrollView:(UIScrollView *)scrollView];
+    } else {
         [self.delegate scrollViewDidEndDraggingInPickerTableView:self];
     }
 }
