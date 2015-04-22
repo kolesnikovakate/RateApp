@@ -9,6 +9,7 @@
 #import "RAXMLParser.h"
 #import "RAXMLParserDelegate.h"
 #import "NSDate+RateApp.h"
+#import "SVProgressHUD.h"
 
 static NSString *const BASE_URL = @"http://www.cbr.ru/scripts/XML_daily.asp?date_req=";
 
@@ -16,10 +17,11 @@ static NSString *const BASE_URL = @"http://www.cbr.ru/scripts/XML_daily.asp?date
 
 + (NSArray *)getCurrencyArrayByDate:(NSDate *)date
 {
-
     RAXMLParserDelegate *delegate = [[RAXMLParserDelegate alloc] init];
 
     NSURL *parserURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", BASE_URL, [date stringForCbrRequest]]];
+
+    [SVProgressHUD showWithStatus:@"123" maskType:SVProgressHUDMaskTypeBlack];
 
     NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:parserURL];
     [parser setDelegate:delegate];
@@ -31,8 +33,9 @@ static NSString *const BASE_URL = @"http://www.cbr.ru/scripts/XML_daily.asp?date
     NSArray *currencyArray;
     if ( delegate.error == nil ) {
         currencyArray = delegate.currencyArray;
+        [SVProgressHUD dismiss];
     } else {
-        NSLog(@"Error: %@", delegate.error);
+        [SVProgressHUD showErrorWithStatus:[delegate.error localizedDescription]];
     }
     return currencyArray;
 }
