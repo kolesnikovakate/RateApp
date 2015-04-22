@@ -13,6 +13,7 @@
 #import "RateViewController.h"
 
 @interface CalendarViewController ()
+
 @property (weak, nonatomic) IBOutlet UIButton *rateButton;
 
 @end
@@ -22,7 +23,8 @@
     RAPickerTableView *_pickerView;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 
     NSMutableArray * dateArray = [NSMutableArray array];

@@ -19,6 +19,10 @@
 {
     [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
     [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+
+    UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Light" size:19.f];
+
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSFontAttributeName: font} forState:UIControlStateNormal];
     return YES;
 }
 

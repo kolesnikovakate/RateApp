@@ -68,7 +68,13 @@
     } else if ([currentElement isEqualToString:@"name"])  {
         currency.name = string;
     } else if ([currentElement isEqualToString:@"value"])  {
-        currency.value = string;
+        NSCharacterSet * charset = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+        string = [string stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        NSScanner * scanner = [NSScanner scannerWithString:string];
+        [scanner setCharactersToBeSkipped:charset];
+        float f;
+        [scanner scanFloat:&f];
+        currency.value = [NSNumber numberWithFloat:f];
     }
 }
 
