@@ -51,4 +51,13 @@
     return stringFromDate;
 }
 
+- (NSString *)stringRateScreen
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setLocale:[NSLocale currentLocale]];
+    [formatter setDateFormat:@"dd MMMM YYYY"];
+    NSString *stringFromDate = [formatter stringFromDate:self];
+    return stringFromDate;
+}
+
 @end

@@ -68,7 +68,10 @@
     } else if ([currentElement isEqualToString:@"name"])  {
         currency.name = string;
     } else if ([currentElement isEqualToString:@"value"])  {
-        currency.value = string;
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        formatter.numberStyle = NSNumberFormatterDecimalStyle;
+        NSNumber *currencyValue = [formatter numberFromString:string];
+        currency.value = currencyValue;
     }
 }
 

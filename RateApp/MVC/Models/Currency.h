@@ -14,6 +14,6 @@
 @property (nonatomic, strong) NSString *charCode;
 @property (nonatomic, strong) NSString *nominal;
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *value;
+@property (nonatomic, strong) NSNumber *value;
 
 @end

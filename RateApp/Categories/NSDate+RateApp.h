@@ -13,5 +13,6 @@
 - (BOOL)checkForWeekend;
 - (BOOL)checkForFirstDayInMonth;
 - (NSString *)stringForCbrRequest;
+- (NSString *)stringRateScreen;
 
 @end
