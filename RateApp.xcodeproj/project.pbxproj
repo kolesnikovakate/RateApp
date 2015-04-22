@@ -25,6 +25,7 @@
 		C0AE6F5A1AE7C81100B142B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0AE6F581AE7C81100B142B7 /* LaunchScreen.xib */; };
 		C0AE6F5B1AE7C81100B142B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0AE6F591AE7C81100B142B7 /* Main.storyboard */; };
 		C0AE6F611AE7CBFC00B142B7 /* CurrencyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AE6F601AE7CBFC00B142B7 /* CurrencyHelper.m */; };
+		C0AE6F681AE823E500B142B7 /* UILabel+CustomFontLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AE6F671AE823E500B142B7 /* UILabel+CustomFontLabel.m */; };
 		C0B6EA671AE7829D0060329A /* RAXMLParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B6EA661AE7829D0060329A /* RAXMLParserDelegate.m */; };
 		C0B6EA6A1AE789C90060329A /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B6EA691AE789C90060329A /* Currency.m */; };
 /* End PBXBuildFile section */
@@ -75,6 +76,8 @@
 		C0AE6F5F1AE7CBFC00B142B7 /* CurrencyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyHelper.h; sourceTree = "<group>"; };
 		C0AE6F601AE7CBFC00B142B7 /* CurrencyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyHelper.m; sourceTree = "<group>"; };
 		C0AE6F621AE7CFCB00B142B7 /* RateApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RateApp-Prefix.pch"; sourceTree = "<group>"; };
+		C0AE6F661AE823E500B142B7 /* UILabel+CustomFontLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+CustomFontLabel.h"; sourceTree = "<group>"; };
+		C0AE6F671AE823E500B142B7 /* UILabel+CustomFontLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+CustomFontLabel.m"; sourceTree = "<group>"; };
 		C0B6EA651AE7829D0060329A /* RAXMLParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RAXMLParserDelegate.h; path = RateApp/Services/RAXMLParserDelegate.h; sourceTree = SOURCE_ROOT; };
 		C0B6EA661AE7829D0060329A /* RAXMLParserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RAXMLParserDelegate.m; path = RateApp/Services/RAXMLParserDelegate.m; sourceTree = SOURCE_ROOT; };
 		C0B6EA681AE789C90060329A /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Currency.h; sourceTree = "<group>"; };
@@ -222,6 +225,8 @@
 				C069BDC81AE679C3000F89F0 /* UIColor+RateApp.m */,
 				C01771F41AE6D9050011B373 /* NSDate+RateApp.h */,
 				C01771F51AE6D9050011B373 /* NSDate+RateApp.m */,
+				C0AE6F661AE823E500B142B7 /* UILabel+CustomFontLabel.h */,
+				C0AE6F671AE823E500B142B7 /* UILabel+CustomFontLabel.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -424,6 +429,7 @@
 				C06E3E301AE64EB600F944A7 /* CalendarViewController.m in Sources */,
 				C06E3E391AE6500F00F944A7 /* RAPickerTableView.m in Sources */,
 				C06E3E061AE64D3100F944A7 /* main.m in Sources */,
+				C0AE6F681AE823E500B142B7 /* UILabel+CustomFontLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

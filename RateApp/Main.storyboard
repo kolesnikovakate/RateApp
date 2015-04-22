@@ -59,19 +59,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13 Декабря 2013" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="bRS-y8-ihU">
-                                <rect key="frame" x="164" y="175" width="272" height="42"/>
+                                <rect key="frame" x="164" y="153" width="272" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 Eur = 68.Rub" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="2qu-db-A9f">
-                                <rect key="frame" x="185" y="279" width="230" height="42"/>
+                                <rect key="frame" x="185" y="252" width="230" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 $ = 55.45 Rub" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Lzc-Qq-YdJ">
-                                <rect key="frame" x="178" y="409" width="245" height="42"/>
+                                <rect key="frame" x="178" y="375" width="245" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -101,7 +101,7 @@
                             <constraint firstAttribute="centerX" secondItem="2qu-db-A9f" secondAttribute="centerX" id="h5L-e4-GQc"/>
                             <constraint firstItem="2qu-db-A9f" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7b3-wX-2O1" secondAttribute="leading" constant="20" symbolic="YES" id="obR-Bj-bZe"/>
                             <constraint firstAttribute="centerX" secondItem="bRS-y8-ihU" secondAttribute="centerX" id="ogP-Id-3jb"/>
-                            <constraint firstAttribute="centerY" secondItem="2qu-db-A9f" secondAttribute="centerY" id="rNe-zM-Xoa"/>
+                            <constraint firstAttribute="centerY" secondItem="2qu-db-A9f" secondAttribute="centerY" multiplier="11:10" id="rNe-zM-Xoa"/>
                             <constraint firstItem="bRS-y8-ihU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7b3-wX-2O1" secondAttribute="leading" constant="20" symbolic="YES" id="zA1-u8-iut"/>
                         </constraints>
                         <variation key="default">

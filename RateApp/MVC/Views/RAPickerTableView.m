@@ -39,8 +39,21 @@
         [self.pickerTableView registerClass:[RAPickerTableViewCell class] forCellReuseIdentifier:@"RAPickerTableViewCell"];
         [self.pickerTableView registerNib:[UINib nibWithNibName:@"RAPickerTableViewCell" bundle:nil] forCellReuseIdentifier:@"RAPickerTableViewCell"];
 
+        _gradientLayerTop = [CAGradientLayer layer];
+        _gradientLayerTop.frame = CGRectMake(0.0, 0.0, self.bounds.size.width, self.bounds.size.height/2.0);
+        _gradientLayerTop.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:1.0 alpha:0.0].CGColor, (id)[UIColor colorWithWhite:1.0 alpha:0.9].CGColor, nil];
+        _gradientLayerTop.startPoint = CGPointMake(0.0f, 0.7f);
+        _gradientLayerTop.endPoint = CGPointMake(0.0f, 0.0f);
 
-        //Create bar selector
+        _gradientLayerBottom = [CAGradientLayer layer];
+        _gradientLayerBottom.frame = CGRectMake(0.0, self.bounds.size.height/2.0, self.bounds.size.width, self.bounds.size.height/2.0);
+        _gradientLayerBottom.colors = _gradientLayerTop.colors;
+        _gradientLayerBottom.startPoint = CGPointMake(0.0f, 0.3f);
+        _gradientLayerBottom.endPoint = CGPointMake(0.0f, 1.0f);
+
+        [self.layer addSublayer:_gradientLayerTop];
+        [self.layer addSublayer:_gradientLayerBottom];
+
         _barSel = [[UIView alloc] initWithFrame:CGRectZero];
         [self addSubview:_barSel];
 
@@ -49,7 +62,7 @@
     return self;
 }
 
-- (void) setFrame:(CGRect)frame
+- (void)setFrame:(CGRect)frame
 {
     [super setFrame:frame];
     _pickerRowY = self.bounds.size.height/2.0 - self.pickerTableView.rowHeight/2.0;
@@ -61,21 +74,8 @@
     [_barSel addBottomBorderWithColor:[UIColor colorRateAppBlue] andWidth:1.f];
     [_barSel addTopBorderWithColor:[UIColor colorRateAppBlue] andWidth:1.f];
 
-    //Layer gradient
-    _gradientLayerTop = [CAGradientLayer layer];
     _gradientLayerTop.frame = CGRectMake(0.0, 0.0, self.bounds.size.width, self.bounds.size.height/2.0);
-    _gradientLayerTop.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:1.0 alpha:0.0].CGColor, (id)[UIColor colorWithWhite:1.0 alpha:0.3].CGColor, nil];
-    _gradientLayerTop.startPoint = CGPointMake(0.0f, 0.7f);
-    _gradientLayerTop.endPoint = CGPointMake(0.0f, 0.0f);
-
-    _gradientLayerBottom = [CAGradientLayer layer];
     _gradientLayerBottom.frame = CGRectMake(0.0, self.bounds.size.height/2.0, self.bounds.size.width, self.bounds.size.height/2.0);
-    _gradientLayerBottom.colors = _gradientLayerTop.colors;
-    _gradientLayerBottom.startPoint = CGPointMake(0.0f, 0.3f);
-    _gradientLayerBottom.endPoint = CGPointMake(0.0f, 1.0f);
-    //Add gradients
-    [self.layer addSublayer:_gradientLayerTop];
-    [self.layer addSublayer:_gradientLayerBottom];
 }
 
 - (void)reloadCellWithIndexPathRow:(NSUInteger)indexPathRow
@@ -107,7 +107,6 @@
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    NSLog(@"didEndDecelerating");
     [self centerValueForScrollView:(UIScrollView *)scrollView];
     [self.delegate scrollViewDidEndDeceleratingInPickerTableView:self];
 }
@@ -141,26 +140,12 @@
         indexPathRow = [self.pickerTableView numberOfRowsInSection:0] - 1;
     }
 
-    _selectedIndexPathRow = indexPathRow;
-    NSLog(@"_selectedIndexPathRow %ld", (long)_selectedIndexPathRow);
-
     float newOffset = indexPathRow * self.pickerTableView.rowHeight;
-
-    //Re-add the contentInset and set the new offset
     newOffset -= CGRectGetMinY(_barSel.frame);
-
-    [CATransaction begin];
-
-    [CATransaction setCompletionBlock:^{
-        [self reloadCellWithIndexPathRow:_selectedIndexPathRow];
-
-        [scrollView setUserInteractionEnabled:YES];
-        [scrollView setAlpha:1.0];
-    }];
-
     [scrollView setContentOffset:CGPointMake(0.0, newOffset) animated:YES];
 
-    [CATransaction commit];
+    _selectedIndexPathRow = indexPathRow;
+    [self reloadCellWithIndexPathRow:_selectedIndexPathRow];
 }
 
 #pragma mark - UITableView dataSource

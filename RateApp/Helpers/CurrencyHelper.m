@@ -12,14 +12,6 @@
 
 + (Currency *)findCurrencyWithCharCode:(NSString *)charCode inArray:(NSArray *)currencyArray
 {
-//    Currency *returnedCurrency = nil;
-//    for (Currency *currency in currencyArray) {
-//        if ([currency.charCode isEqualToString:charCode]) {
-//            returnedCurrency = currency;
-//        }
-//    }
-//    return returnedCurrency;
-
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"charCode == %@", charCode];
     NSArray *filteredArray = [currencyArray filteredArrayUsingPredicate:predicate];
     return filteredArray.count > 0 ? filteredArray.firstObject : nil;

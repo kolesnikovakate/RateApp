@@ -41,6 +41,7 @@
             [self setUpDataFromArray:currencyArray];
         } else {
             [SVProgressHUD showErrorWithStatus:[error localizedDescription]];
+            [self.navigationController popViewControllerAnimated:YES];
         }
     }];
 }
@@ -55,12 +56,19 @@
 {
     Currency *usd = [CurrencyHelper findCurrencyWithCharCode:kRAUSDCharCode inArray:dataArray];
     Currency *eur = [CurrencyHelper findCurrencyWithCharCode:kRAEURCharCode inArray:dataArray];
-    NSLog(@"%@ %@", usd.nominal, usd.value);
-    NSLog(@"%@ %@", eur.nominal, eur.value);
     self.eurLabel.text = [NSString stringWithFormat:@"%@ Eur = %.2f Rub", eur.nominal, eur.value.floatValue];
     self.usdLabel.text = [NSString stringWithFormat:@"%@ $ = %.2f Rub", usd.nominal, usd.value.floatValue];
+
+    self.eurLabel.alpha = 0.f;
+    self.usdLabel.alpha = 0.f;
     self.eurLabel.hidden = NO;
     self.usdLabel.hidden = NO;
+
+    [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.eurLabel.alpha = 1.f;
+        self.usdLabel.alpha = 1.f;
+    } completion:nil];
+
 }
 
 @end
