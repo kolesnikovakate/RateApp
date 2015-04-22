@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void (^RAXMLParserCompletionBlock)(NSArray *currencyArray, NSError *error);
+
 @interface RAXMLParser : NSObject
 
-+ (NSArray *)getCurrencyArrayByDate:(NSDate *)date;
++ (void)getCurrencyArrayByDate:(NSDate *)date withCompletion:(RAXMLParserCompletionBlock)completion;
 
 @end

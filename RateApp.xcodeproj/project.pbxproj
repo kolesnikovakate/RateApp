@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		168BFD2D7EEF91A503234EC4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9FA6F53B762B499FD870497 /* libPods.a */; };
 		C01771F61AE6D9050011B373 /* NSDate+RateApp.m in Sources */ = {isa = PBXBuildFile; fileRef = C01771F51AE6D9050011B373 /* NSDate+RateApp.m */; };
+		C01EFDDD1AE7B81000770734 /* RateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C01EFDDC1AE7B81000770734 /* RateViewController.m */; };
+		C01EFDE21AE7C5AE00770734 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C01EFDE41AE7C5AE00770734 /* Localizable.strings */; };
 		C05ACBA71AE790A200947FB7 /* RAXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C05ACBA61AE790A200947FB7 /* RAXMLParser.m */; };
 		C069BDC91AE679C3000F89F0 /* UIColor+RateApp.m in Sources */ = {isa = PBXBuildFile; fileRef = C069BDC81AE679C3000F89F0 /* UIColor+RateApp.m */; };
 		C06E3E061AE64D3100F944A7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C06E3E051AE64D3100F944A7 /* main.m */; };
-		C06E3E0F1AE64D3200F944A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C06E3E0D1AE64D3200F944A7 /* Main.storyboard */; };
 		C06E3E111AE64D3200F944A7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C06E3E101AE64D3200F944A7 /* Images.xcassets */; };
-		C06E3E141AE64D3200F944A7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C06E3E121AE64D3200F944A7 /* LaunchScreen.xib */; };
 		C06E3E201AE64D3200F944A7 /* RateAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C06E3E1F1AE64D3200F944A7 /* RateAppTests.m */; };
 		C06E3E301AE64EB600F944A7 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C06E3E2D1AE64EB600F944A7 /* CalendarViewController.m */; };
 		C06E3E361AE64EF900F944A7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C06E3E351AE64EF900F944A7 /* AppDelegate.m */; };
@@ -22,6 +22,8 @@
 		C06E3E3C1AE65CEC00F944A7 /* UIView+Border.m in Sources */ = {isa = PBXBuildFile; fileRef = C06E3E3B1AE65CEC00F944A7 /* UIView+Border.m */; };
 		C06E3E401AE65F7F00F944A7 /* RAPickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C06E3E3F1AE65F7F00F944A7 /* RAPickerTableViewCell.m */; };
 		C06E3E421AE65F9000F944A7 /* RAPickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C06E3E411AE65F9000F944A7 /* RAPickerTableViewCell.xib */; };
+		C0AE6F5A1AE7C81100B142B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0AE6F581AE7C81100B142B7 /* LaunchScreen.xib */; };
+		C0AE6F5B1AE7C81100B142B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0AE6F591AE7C81100B142B7 /* Main.storyboard */; };
 		C0B6EA671AE7829D0060329A /* RAXMLParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B6EA661AE7829D0060329A /* RAXMLParserDelegate.m */; };
 		C0B6EA6A1AE789C90060329A /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B6EA691AE789C90060329A /* Currency.m */; };
 /* End PBXBuildFile section */
@@ -41,6 +43,10 @@
 		B9FA6F53B762B499FD870497 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C01771F41AE6D9050011B373 /* NSDate+RateApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+RateApp.h"; sourceTree = "<group>"; };
 		C01771F51AE6D9050011B373 /* NSDate+RateApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+RateApp.m"; sourceTree = "<group>"; };
+		C01EFDDB1AE7B81000770734 /* RateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateViewController.h; sourceTree = "<group>"; };
+		C01EFDDC1AE7B81000770734 /* RateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateViewController.m; sourceTree = "<group>"; };
+		C01EFDE31AE7C5AE00770734 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C01EFDE51AE7C5B300770734 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C05ACBA51AE790A200947FB7 /* RAXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RAXMLParser.h; path = RateApp/Services/RAXMLParser.h; sourceTree = SOURCE_ROOT; };
 		C05ACBA61AE790A200947FB7 /* RAXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RAXMLParser.m; path = RateApp/Services/RAXMLParser.m; sourceTree = SOURCE_ROOT; };
 		C069BDC71AE679C3000F89F0 /* UIColor+RateApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RateApp.h"; sourceTree = "<group>"; };
@@ -48,9 +54,7 @@
 		C06E3E001AE64D3100F944A7 /* RateApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RateApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C06E3E041AE64D3100F944A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C06E3E051AE64D3100F944A7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C06E3E0E1AE64D3200F944A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C06E3E101AE64D3200F944A7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C06E3E131AE64D3200F944A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		C06E3E191AE64D3200F944A7 /* RateAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RateAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C06E3E1E1AE64D3200F944A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C06E3E1F1AE64D3200F944A7 /* RateAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RateAppTests.m; sourceTree = "<group>"; };
@@ -65,6 +69,8 @@
 		C06E3E3E1AE65F7F00F944A7 /* RAPickerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAPickerTableViewCell.h; sourceTree = "<group>"; };
 		C06E3E3F1AE65F7F00F944A7 /* RAPickerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAPickerTableViewCell.m; sourceTree = "<group>"; };
 		C06E3E411AE65F9000F944A7 /* RAPickerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RAPickerTableViewCell.xib; sourceTree = "<group>"; };
+		C0AE6F581AE7C81100B142B7 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		C0AE6F591AE7C81100B142B7 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C0B6EA651AE7829D0060329A /* RAXMLParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RAXMLParserDelegate.h; path = RateApp/Services/RAXMLParserDelegate.h; sourceTree = SOURCE_ROOT; };
 		C0B6EA661AE7829D0060329A /* RAXMLParserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RAXMLParserDelegate.m; path = RateApp/Services/RAXMLParserDelegate.m; sourceTree = SOURCE_ROOT; };
 		C0B6EA681AE789C90060329A /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Currency.h; sourceTree = "<group>"; };
@@ -126,9 +132,9 @@
 				C06E3E321AE64EC500F944A7 /* Services */,
 				C06E3E311AE64EBE00F944A7 /* Categories */,
 				C06E3E2A1AE64EB600F944A7 /* MVC */,
-				C06E3E0D1AE64D3200F944A7 /* Main.storyboard */,
 				C06E3E101AE64D3200F944A7 /* Images.xcassets */,
-				C06E3E121AE64D3200F944A7 /* LaunchScreen.xib */,
+				C0AE6F581AE7C81100B142B7 /* LaunchScreen.xib */,
+				C0AE6F591AE7C81100B142B7 /* Main.storyboard */,
 				C06E3E031AE64D3100F944A7 /* Supporting Files */,
 			);
 			path = RateApp;
@@ -139,6 +145,7 @@
 			children = (
 				C06E3E041AE64D3100F944A7 /* Info.plist */,
 				C06E3E051AE64D3100F944A7 /* main.m */,
+				C01EFDE41AE7C5AE00770734 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -175,6 +182,8 @@
 			children = (
 				C06E3E2C1AE64EB600F944A7 /* CalendarViewController.h */,
 				C06E3E2D1AE64EB600F944A7 /* CalendarViewController.m */,
+				C01EFDDB1AE7B81000770734 /* RateViewController.h */,
+				C01EFDDC1AE7B81000770734 /* RateViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -315,7 +324,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
 			mainGroup = C06E3DF71AE64D3100F944A7;
 			productRefGroup = C06E3E011AE64D3100F944A7 /* Products */;
@@ -333,8 +341,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C06E3E0F1AE64D3200F944A7 /* Main.storyboard in Resources */,
-				C06E3E141AE64D3200F944A7 /* LaunchScreen.xib in Resources */,
+				C0AE6F5A1AE7C81100B142B7 /* LaunchScreen.xib in Resources */,
+				C0AE6F5B1AE7C81100B142B7 /* Main.storyboard in Resources */,
+				C01EFDE21AE7C5AE00770734 /* Localizable.strings in Resources */,
 				C06E3E421AE65F9000F944A7 /* RAPickerTableViewCell.xib in Resources */,
 				C06E3E111AE64D3200F944A7 /* Images.xcassets in Resources */,
 			);
@@ -389,6 +398,7 @@
 			files = (
 				C06E3E361AE64EF900F944A7 /* AppDelegate.m in Sources */,
 				C0B6EA671AE7829D0060329A /* RAXMLParserDelegate.m in Sources */,
+				C01EFDDD1AE7B81000770734 /* RateViewController.m in Sources */,
 				C06E3E3C1AE65CEC00F944A7 /* UIView+Border.m in Sources */,
 				C01771F61AE6D9050011B373 /* NSDate+RateApp.m in Sources */,
 				C0B6EA6A1AE789C90060329A /* Currency.m in Sources */,
@@ -420,20 +430,13 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C06E3E0D1AE64D3200F944A7 /* Main.storyboard */ = {
+		C01EFDE41AE7C5AE00770734 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C06E3E0E1AE64D3200F944A7 /* Base */,
+				C01EFDE31AE7C5AE00770734 /* ru */,
+				C01EFDE51AE7C5B300770734 /* en */,
 			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		C06E3E121AE64D3200F944A7 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C06E3E131AE64D3200F944A7 /* Base */,
-			);
-			name = LaunchScreen.xib;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

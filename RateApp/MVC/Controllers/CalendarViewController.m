@@ -10,11 +10,10 @@
 #import "RAPickerTableView.h"
 #import "UIColor+RateApp.h"
 #import "NSDate+RateApp.h"
-#import "RAXMLParser.h"
+#import "RateViewController.h"
 
 @interface CalendarViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *rateButton;
-- (IBAction)rate:(id)sender;
 
 @end
 
@@ -47,11 +46,21 @@
     self.rateButton.layer.cornerRadius = self.rateButton.bounds.size.height / 2;
     self.rateButton.layer.borderColor = [UIColor colorRateAppBlue].CGColor;
     self.rateButton.layer.borderWidth = 1.0f;
+    [self.rateButton setTitle:NSLocalizedString(@"RATE", "") forState:UIControlStateNormal];
     [self.rateButton setTitleColor:[UIColor colorRateAppBlue] forState:UIControlStateNormal];
     [self.rateButton setTitleColor:[UIColor colorRateAppTextGray] forState:UIControlStateDisabled];
     self.rateButton.backgroundColor = [UIColor colorRateAppButtonBackground];
+    [self.rateButton setTitleEdgeInsets:UIEdgeInsetsMake(0.f, 3.f, 0.f, 3.f)];
+    self.rateButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    self.rateButton.titleLabel.minimumScaleFactor = .5;
     [self.view bringSubviewToFront:self.rateButton];
 
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)viewDidLayoutSubviews
@@ -61,11 +70,12 @@
     [_pickerView needsUpdateConstraints];
 }
 
-- (IBAction)rate:(id)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSDate *selectedDate = _arrDays[_pickerView.selectedIndexPathRow];
-    NSArray *array = [RAXMLParser getCurrencyArrayByDate:selectedDate];
-    NSLog(@"%@", array);
+    if ([segue.identifier isEqualToString:@"ShowRate"]) {
+        RateViewController *destVC = (RateViewController *)segue.destinationViewController;
+        destVC.selectedDate = _arrDays[_pickerView.selectedIndexPathRow];
+    }
 }
 
 #pragma-mark RAPickerTableViewDataSource

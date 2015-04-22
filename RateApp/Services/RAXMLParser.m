@@ -15,29 +15,31 @@ static NSString *const BASE_URL = @"http://www.cbr.ru/scripts/XML_daily.asp?date
 
 @implementation RAXMLParser
 
-+ (NSArray *)getCurrencyArrayByDate:(NSDate *)date
++ (void)getCurrencyArrayByDate:(NSDate *)date withCompletion:(RAXMLParserCompletionBlock)completion
 {
-    RAXMLParserDelegate *delegate = [[RAXMLParserDelegate alloc] init];
+    NSOperationQueue *current_queue = [NSOperationQueue currentQueue];
 
-    NSURL *parserURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", BASE_URL, [date stringForCbrRequest]]];
+    NSOperationQueue *q = [[NSOperationQueue alloc] init];
+    [q addOperationWithBlock:^{
+        RAXMLParserDelegate *delegate = [[RAXMLParserDelegate alloc] init];
 
-    [SVProgressHUD showWithStatus:@"123" maskType:SVProgressHUDMaskTypeBlack];
+        NSURL *parserURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", BASE_URL, [date stringForCbrRequest]]];
 
-    NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:parserURL];
-    [parser setDelegate:delegate];
-    [parser parse];
+        NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:parserURL];
+        [parser setDelegate:delegate];
+        [parser parse];
 
-    while ( !delegate.done )
-        sleep(1);
+        while ( !delegate.done )
+            sleep(1);
 
-    NSArray *currencyArray;
-    if ( delegate.error == nil ) {
-        currencyArray = delegate.currencyArray;
-        [SVProgressHUD dismiss];
-    } else {
-        [SVProgressHUD showErrorWithStatus:[delegate.error localizedDescription]];
-    }
-    return currencyArray;
+        [current_queue addOperationWithBlock:^{
+            if ( delegate.error == nil ) {
+                completion(delegate.currencyArray, nil);
+            } else {
+                completion(nil, delegate.error);
+            }
+        }];
+    }];
 }
 
 @end
