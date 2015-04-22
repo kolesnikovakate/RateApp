@@ -25,7 +25,6 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="9yj-Hk-crm" firstAttribute="bottom" secondItem="gVM-wE-gZU" secondAttribute="bottom" constant="-3" id="DoP-m9-v8q"/>
                     <constraint firstAttribute="centerY" secondItem="gVM-wE-gZU" secondAttribute="centerY" id="TDB-SW-4Wm"/>
@@ -33,7 +32,6 @@
                     <constraint firstAttribute="centerX" secondItem="gVM-wE-gZU" secondAttribute="centerX" id="m1x-U6-Mlk"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="labelDay" destination="gVM-wE-gZU" id="HP2-rP-0yq"/>
                 <outlet property="labelYearMonth" destination="9yj-Hk-crm" id="pC6-F9-2Kq"/>

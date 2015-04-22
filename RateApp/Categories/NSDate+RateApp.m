@@ -42,4 +42,13 @@
     return isFirstDayInMonth;
 }
 
+- (NSString *)stringForCbrRequest
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setLocale:[NSLocale currentLocale]];
+    [formatter setDateFormat:@"dd/MM/YYYY"];
+    NSString *stringFromDate = [formatter stringFromDate:self];
+    return stringFromDate;
+}
+
 @end

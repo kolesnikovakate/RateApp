@@ -1,0 +1,15 @@
+//
+//  RateApp-Prefix.pch
+//  RateApp
+//
+//  Created by Екатерина Колесникова on 22.04.15.
+//  Copyright (c) 2015 Kolesnikova Ekaterina. All rights reserved.
+//
+
+#ifndef RateApp_RateApp_Prefix_pch
+#define RateApp_RateApp_Prefix_pch
+
+#define kRAUSDCharCode @"USD"
+#define kRAEURCharCode @"EUR"
+
+#endif

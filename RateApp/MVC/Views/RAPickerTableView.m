@@ -100,14 +100,16 @@
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if (![scrollView isDragging]) {
-        NSLog(@"didEndDragging");
         [self centerValueForScrollView:(UIScrollView *)scrollView];
+    } else {
+        [self.delegate scrollViewDidEndDraggingInPickerTableView:self];
     }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     NSLog(@"didEndDecelerating");
     [self centerValueForScrollView:(UIScrollView *)scrollView];
+    [self.delegate scrollViewDidEndDeceleratingInPickerTableView:self];
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView

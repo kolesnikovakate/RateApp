@@ -15,6 +15,8 @@
 - (void)awakeFromNib
 {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.backgroundColor = [UIColor colorRateAppBackgroundApplication];
+
 }
 
 - (void)setCellTypeid:(kRAPickerCellTypeid)cellTypeid

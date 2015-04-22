@@ -30,4 +30,9 @@
     return [UIColor colorWithRed:146.f/255.f green:146.f/255.f blue:146.f/255.f alpha:1.f];
 }
 
++ (UIColor *)colorRateAppButtonBackground
+{
+    return [UIColor colorWithRed:249.f/255.f green:249.f/255.f blue:249.f/255.f alpha:1.f];
+}
+
 @end
