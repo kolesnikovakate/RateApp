@@ -26,6 +26,6 @@
 @property (nonatomic, strong) UITableView *pickerTableView;
 @property (nonatomic, weak) id <RAPickerTableViewDataSource> dataSource;
 @property (nonatomic, weak) id <RAPickerTableViewDelegate> delegate;
-@property (nonatomic, assign, readonly) NSInteger selectedIndexPathRow;
+@property (nonatomic, assign) NSInteger selectedIndexPathRow;
 
 @end

@@ -69,13 +69,15 @@
     self.pickerTableView .frame = self.bounds;
 
     [self.pickerTableView setContentInset:UIEdgeInsetsMake(_pickerRowY, 0.0, _pickerRowY, 0.0)];
-    [self.pickerTableView setContentOffset:CGPointMake(0, -_pickerRowY)];
+
     [_barSel setFrame:CGRectMake(0.0, _pickerRowY, self.frame.size.width, self.pickerTableView.rowHeight)];
     [_barSel addBottomBorderWithColor:[UIColor colorRateAppBlue] andWidth:1.f];
     [_barSel addTopBorderWithColor:[UIColor colorRateAppBlue] andWidth:1.f];
 
     _gradientLayerTop.frame = CGRectMake(0.0, 0.0, self.bounds.size.width, self.bounds.size.height/2.0);
     _gradientLayerBottom.frame = CGRectMake(0.0, self.bounds.size.height/2.0, self.bounds.size.width, self.bounds.size.height/2.0);
+
+    [self centerCellWithIndexPathRow:_selectedIndexPathRow];
 }
 
 - (void)reloadCellWithIndexPathRow:(NSUInteger)indexPathRow
@@ -131,10 +133,10 @@
     NSInteger indexPathRow = (int)(newValue/self.pickerTableView.rowHeight);
 
     //Center the cell
-    [self centerCellWithIndexPathRow:indexPathRow forScrollView:scrollView];
+    [self centerCellWithIndexPathRow:indexPathRow];
 }
 
-- (void)centerCellWithIndexPathRow:(NSUInteger)indexPathRow forScrollView:(UIScrollView *)scrollView
+- (void)centerCellWithIndexPathRow:(NSUInteger)indexPathRow
 {
     if(indexPathRow >= [self.pickerTableView numberOfRowsInSection:0]) {
         indexPathRow = [self.pickerTableView numberOfRowsInSection:0] - 1;
@@ -142,7 +144,7 @@
 
     float newOffset = indexPathRow * self.pickerTableView.rowHeight;
     newOffset -= CGRectGetMinY(_barSel.frame);
-    [scrollView setContentOffset:CGPointMake(0.0, newOffset) animated:YES];
+    [self.pickerTableView setContentOffset:CGPointMake(0.0, newOffset) animated:YES];
 
     _selectedIndexPathRow = indexPathRow;
     [self reloadCellWithIndexPathRow:_selectedIndexPathRow];
