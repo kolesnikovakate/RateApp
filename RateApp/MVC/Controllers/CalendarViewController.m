@@ -29,24 +29,9 @@
 {
     [super viewDidLoad];
 
-    NSMutableArray *arrDays = [NSMutableArray array];
-    NSMutableArray *arrYears = [NSMutableArray array];
-    for (NSUInteger year = 2004; year <= 2014; year++) {
-        [arrYears addObject:@(year)];
-        NSMutableArray * dateArray = [NSMutableArray array];
-        NSCalendar * cal = [NSCalendar currentCalendar];
-        NSDateComponents *startComponents = [[NSDateComponents alloc] init];
-        [startComponents setDay:1];
-        [startComponents setYear:year];
-
-        for(NSUInteger day = 1; day <= 365; day++) {
-            [startComponents setDay:day];
-            [dateArray addObject:[cal dateFromComponents:startComponents]];
-        }
-        [arrDays addObject:dateArray];
-    }
-    _arrDays = [NSArray arrayWithArray:arrDays];
-    _arrYears = [NSArray arrayWithArray:arrYears];
+    NSArray *calendarArray = [NSDate getCalendarArray];
+    _arrYears = [calendarArray[0] copy];
+    _arrDays= [calendarArray[1] copy];
 
     _currentArrDays = _arrDays[0];
 
@@ -146,8 +131,13 @@
 {
     NSInteger i = pickerView.selectedYearIndexPathRow;
     if(i < _arrDays.count && i >= 0 ) {
-    _currentArrDays = _arrDays[i];
-    [pickerView.pickerDateTableView reloadData];
+        _currentArrDays = _arrDays[i];
+        [pickerView.pickerDateTableView reloadData];
+
+        //если пользователь выбрал последний день в високосном году и перешел на не високосный
+        if (pickerView.selectedDateIndexPathRow >= _currentArrDays.count) {
+            pickerView.selectedDateIndexPathRow = _currentArrDays.count - 1;
+        }
     }
 }
 

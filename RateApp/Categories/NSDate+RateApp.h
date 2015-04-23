@@ -15,4 +15,6 @@
 - (NSString *)stringForCbrRequest;
 - (NSString *)stringRateScreen;
 
++ (NSArray *)getCalendarArray;
+
 @end

@@ -68,15 +68,15 @@ static float const ROW_HEIGHT = 30.f;
 
     _pickerRowY = self.bounds.size.height/2.0 - ROW_HEIGHT/2.0;
     self.pickerDateTableView.pickerRowY = _pickerRowY;
-    self.pickerDateTableView.frame = CGRectMake(self.bounds.origin.x + size.width/2, self.bounds.origin.y,
-               size.width/2, size.height);
+    self.pickerDateTableView.frame = CGRectMake(self.bounds.origin.x + size.width/3, self.bounds.origin.y,
+               size.width/3 * 2, size.height);
     self.pickerDateTableView.eventDelegate = self;
 
     [self.pickerDateTableView setContentInset:UIEdgeInsetsMake(_pickerRowY, 0.0, _pickerRowY, 0.0)];
 
     self.pickerYearTableView.pickerRowY = _pickerRowY;
     self.pickerYearTableView.frame = CGRectMake(self.bounds.origin.x, self.bounds.origin.y,
-                                                size.width/2, size.height);
+                                                size.width/3, size.height);
     self.pickerYearTableView.eventDelegate = self;
 
     [self.pickerYearTableView setContentInset:UIEdgeInsetsMake(_pickerRowY, 0.0, _pickerRowY, 0.0)];
