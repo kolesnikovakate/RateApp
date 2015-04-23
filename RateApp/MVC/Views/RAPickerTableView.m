@@ -7,116 +7,61 @@
 //
 
 #import "RAPickerTableView.h"
-#import "UIView+Border.h"
-#import "UIColor+RateApp.h"
+#import "RAPickerTableViewCell.h"
+#import "RAPickerTableViewYearCell.h"
 
-@implementation RAPickerTableView {
-    CAGradientLayer *_gradientLayerTop;
-    CAGradientLayer *_gradientLayerBottom;
-    UIView *_barSel;
-    float _pickerRowY;
-}
+@implementation RAPickerTableView
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame pickerRowY:(float)pickerRowY rowHeight:(float)rowHeight
 {
-    if(self = [super initWithFrame:frame]) {
-        self.pickerTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    if(self = [super initWithFrame:frame style:UITableViewStylePlain]) {
 
-        [self.pickerTableView registerClass:[RAPickerTableViewCell class] forCellReuseIdentifier:@"RAPickerTableViewCell"];
-        [self.pickerTableView registerNib:[UINib nibWithNibName:@"RAPickerTableViewCell" bundle:nil] forCellReuseIdentifier:@"RAPickerTableViewCell"];
+        [self registerClass:[RAPickerTableViewCell class] forCellReuseIdentifier:@"RAPickerTableViewCell"];
+        [self registerNib:[UINib nibWithNibName:@"RAPickerTableViewCell" bundle:nil] forCellReuseIdentifier:@"RAPickerTableViewCell"];
 
-        [self.pickerTableView setScrollEnabled:YES];
-        self.pickerTableView.rowHeight = 30.f;
-        [self.pickerTableView setShowsVerticalScrollIndicator:NO];
-        [self.pickerTableView setUserInteractionEnabled:YES];
-        [self.pickerTableView setBackgroundColor:[UIColor colorRateAppBackgroundApplication]];
-        [self.pickerTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-        self.pickerTableView.dataSource = self;
-        self.pickerTableView.delegate = self;
+        [self registerClass:[RAPickerTableViewYearCell class] forCellReuseIdentifier:@"RAPickerTableViewYearCell"];
 
-        [self addSubview:self.pickerTableView];
+        [self setScrollEnabled:YES];
+        self.rowHeight = rowHeight;
+        [self setShowsVerticalScrollIndicator:NO];
+        [self setUserInteractionEnabled:YES];
+        [self setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+        self.delegate = self;
 
-        [self.pickerTableView registerClass:[RAPickerTableViewCell class] forCellReuseIdentifier:@"RAPickerTableViewCell"];
-        [self.pickerTableView registerNib:[UINib nibWithNibName:@"RAPickerTableViewCell" bundle:nil] forCellReuseIdentifier:@"RAPickerTableViewCell"];
-
-        _gradientLayerTop = [CAGradientLayer layer];
-        _gradientLayerTop.frame = CGRectMake(0.0, 0.0, self.bounds.size.width, self.bounds.size.height/2.0);
-        _gradientLayerTop.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:1.0 alpha:0.0].CGColor, (id)[UIColor colorWithWhite:1.0 alpha:0.9].CGColor, nil];
-        _gradientLayerTop.startPoint = CGPointMake(0.0f, 0.7f);
-        _gradientLayerTop.endPoint = CGPointMake(0.0f, 0.0f);
-
-        _gradientLayerBottom = [CAGradientLayer layer];
-        _gradientLayerBottom.frame = CGRectMake(0.0, self.bounds.size.height/2.0, self.bounds.size.width, self.bounds.size.height/2.0);
-        _gradientLayerBottom.colors = _gradientLayerTop.colors;
-        _gradientLayerBottom.startPoint = CGPointMake(0.0f, 0.3f);
-        _gradientLayerBottom.endPoint = CGPointMake(0.0f, 1.0f);
-
-        [self.layer addSublayer:_gradientLayerTop];
-        [self.layer addSublayer:_gradientLayerBottom];
-
-        _barSel = [[UIView alloc] initWithFrame:CGRectZero];
-        [self addSubview:_barSel];
-
-        _selectedIndexPathRow = 0;
+        _pickerRowY = pickerRowY;
     }
     return self;
-}
-
-- (void)setFrame:(CGRect)frame
-{
-    [super setFrame:frame];
-    _pickerRowY = self.bounds.size.height/2.0 - self.pickerTableView.rowHeight/2.0;
-    self.pickerTableView .frame = self.bounds;
-
-    [self.pickerTableView setContentInset:UIEdgeInsetsMake(_pickerRowY, 0.0, _pickerRowY, 0.0)];
-
-    [_barSel setFrame:CGRectMake(0.0, _pickerRowY, self.frame.size.width, self.pickerTableView.rowHeight)];
-    [_barSel addBottomBorderWithColor:[UIColor colorRateAppBlue] andWidth:1.f];
-    [_barSel addTopBorderWithColor:[UIColor colorRateAppBlue] andWidth:1.f];
-
-    _gradientLayerTop.frame = CGRectMake(0.0, 0.0, self.bounds.size.width, self.bounds.size.height/2.0);
-    _gradientLayerBottom.frame = CGRectMake(0.0, self.bounds.size.height/2.0, self.bounds.size.width, self.bounds.size.height/2.0);
-
-    [self centerCellWithIndexPathRow:_selectedIndexPathRow];
 }
 
 - (void)reloadCellWithIndexPathRow:(NSUInteger)indexPathRow
 {
     NSArray *paths = @[[NSIndexPath indexPathForRow:indexPathRow inSection:0]];
-    [self.pickerTableView beginUpdates];
-    [self.pickerTableView reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationNone];
-    [self.pickerTableView endUpdates];
-}
-
-#pragma mark - Properties
-
-- (void)setDataSource:(id)dataSource
-{
-    _dataSource = dataSource;
-    if (_dataSource) {
-        [self.pickerTableView reloadData];
-    }
+    [self beginUpdates];
+    [self reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationNone];
+    [self endUpdates];
 }
 
 #pragma mark - UIScrollViewDelegate
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
     if (![scrollView isDragging]) {
         [self centerValueForScrollView:(UIScrollView *)scrollView];
     } else {
-        [self.delegate scrollViewDidEndDraggingInPickerTableView:self];
+        [self.scrollDelegate scrollViewDidEndDraggingInPickerTableView:self];
     }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     [self centerValueForScrollView:(UIScrollView *)scrollView];
-    [self.delegate scrollViewDidEndDeceleratingInPickerTableView:self];
+    [self.scrollDelegate scrollViewDidEndDeceleratingInPickerTableView:self];
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     NSInteger lastSelectedIndexPathRow = _selectedIndexPathRow;
     _selectedIndexPathRow = -1;
+    [self.eventDelegate changeSelectedIndexPathRowInPickerTableView:self];
     [self reloadCellWithIndexPathRow:lastSelectedIndexPathRow];
 }
 
@@ -126,11 +71,11 @@
 {
     float offset = scrollView.contentOffset.y;
     offset += scrollView.contentInset.top;
-    int mod = (int)offset % (int)self.pickerTableView.rowHeight;
-    float newValue = (mod >= self.pickerTableView.rowHeight/2.0) ? offset + (self.pickerTableView.rowHeight-mod) : offset-mod;
+    int mod = (int)offset % (int)self.rowHeight;
+    float newValue = (mod >= self.rowHeight/2.0) ? offset + (self.rowHeight-mod) : offset-mod;
 
     //Calculates the indexPath of the cell and set it in the object as property
-    NSInteger indexPathRow = (int)(newValue/self.pickerTableView.rowHeight);
+    NSInteger indexPathRow = (int)(newValue/self.rowHeight);
 
     //Center the cell
     [self centerCellWithIndexPathRow:indexPathRow];
@@ -138,34 +83,18 @@
 
 - (void)centerCellWithIndexPathRow:(NSUInteger)indexPathRow
 {
-    if(indexPathRow >= [self.pickerTableView numberOfRowsInSection:0]) {
-        indexPathRow = [self.pickerTableView numberOfRowsInSection:0] - 1;
+    if(indexPathRow >= [self numberOfRowsInSection:0]) {
+        indexPathRow = [self numberOfRowsInSection:0] - 1;
     }
 
-    float newOffset = indexPathRow * self.pickerTableView.rowHeight;
-    newOffset -= CGRectGetMinY(_barSel.frame);
-    [self.pickerTableView setContentOffset:CGPointMake(0.0, newOffset) animated:YES];
+    float newOffset = indexPathRow * self.rowHeight;
+    newOffset -= _pickerRowY;
+    [self setContentOffset:CGPointMake(0.0, newOffset) animated:YES];
 
     _selectedIndexPathRow = indexPathRow;
+    [self.eventDelegate changeSelectedIndexPathRowInPickerTableView:self];
     [self reloadCellWithIndexPathRow:_selectedIndexPathRow];
 }
 
-#pragma mark - UITableView dataSource
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1.0f;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [self.dataSource numberOfRowsInSection:section pickerTableView:self];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    RAPickerTableViewCell *cell = [self.dataSource pickerTableView:self cellAtIndexPath:indexPath];
-    return cell;
-}
 
 @end

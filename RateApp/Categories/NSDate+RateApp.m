@@ -60,4 +60,37 @@
     return stringFromDate;
 }
 
++ (NSArray *)getCalendarArray
+{
+    NSMutableArray *arrDays = [NSMutableArray array];
+    NSMutableArray *arrYears = [NSMutableArray array];
+
+    NSCalendar * cal = [NSCalendar currentCalendar];
+    NSDateComponents *startComponents = [[NSDateComponents alloc] init];
+
+    for (NSUInteger year = 2004; year <= 2014; year++) {
+        [arrYears addObject:@(year)];
+        NSMutableArray * dateArray = [NSMutableArray array];
+
+        [startComponents setDay:1];
+        [startComponents setYear:year];
+
+        NSInteger numbersOfDay = [self isYearLeapYear:year] ? 366 : 365;
+        for(NSUInteger day = 1; day <= numbersOfDay; day++) {
+            [startComponents setDay:day];
+            [dateArray addObject:[cal dateFromComponents:startComponents]];
+        }
+        [arrDays addObject:dateArray];
+    }
+    NSMutableArray *calendarArray = [[NSMutableArray alloc] init];
+    [calendarArray addObject:arrYears];
+    [calendarArray addObject:arrDays];
+    return calendarArray;
+}
+
++ (BOOL)isYearLeapYear:(NSInteger)year
+{
+    return (( year%100 != 0) && (year%4 == 0)) || year%400 == 0;
+}
+
 @end
