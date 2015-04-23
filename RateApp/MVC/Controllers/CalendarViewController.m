@@ -42,6 +42,7 @@
     _pickerView = [[RAPickerTableView alloc] initWithFrame:CGRectZero];
     _pickerView.dataSource = self;
     _pickerView.delegate = self;
+    _pickerView.selectedIndexPathRow = 0;
 
     [self.view addSubview:_pickerView];
 
