@@ -22,6 +22,7 @@
 		C06E3E3C1AE65CEC00F944A7 /* UIView+Border.m in Sources */ = {isa = PBXBuildFile; fileRef = C06E3E3B1AE65CEC00F944A7 /* UIView+Border.m */; };
 		C06E3E401AE65F7F00F944A7 /* RAPickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C06E3E3F1AE65F7F00F944A7 /* RAPickerTableViewCell.m */; };
 		C06E3E421AE65F9000F944A7 /* RAPickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C06E3E411AE65F9000F944A7 /* RAPickerTableViewCell.xib */; };
+		C0ABE59F1AE8D941003361D0 /* RAPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0ABE59E1AE8D941003361D0 /* RAPickerView.m */; };
 		C0AE6F5A1AE7C81100B142B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0AE6F581AE7C81100B142B7 /* LaunchScreen.xib */; };
 		C0AE6F5B1AE7C81100B142B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0AE6F591AE7C81100B142B7 /* Main.storyboard */; };
 		C0AE6F611AE7CBFC00B142B7 /* CurrencyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AE6F601AE7CBFC00B142B7 /* CurrencyHelper.m */; };
@@ -71,6 +72,8 @@
 		C06E3E3E1AE65F7F00F944A7 /* RAPickerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAPickerTableViewCell.h; sourceTree = "<group>"; };
 		C06E3E3F1AE65F7F00F944A7 /* RAPickerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAPickerTableViewCell.m; sourceTree = "<group>"; };
 		C06E3E411AE65F9000F944A7 /* RAPickerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RAPickerTableViewCell.xib; sourceTree = "<group>"; };
+		C0ABE59D1AE8D941003361D0 /* RAPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAPickerView.h; sourceTree = "<group>"; };
+		C0ABE59E1AE8D941003361D0 /* RAPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAPickerView.m; sourceTree = "<group>"; };
 		C0AE6F581AE7C81100B142B7 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		C0AE6F591AE7C81100B142B7 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C0AE6F5F1AE7CBFC00B142B7 /* CurrencyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyHelper.h; sourceTree = "<group>"; };
@@ -212,6 +215,8 @@
 				C06E3E3D1AE65F5E00F944A7 /* Cells */,
 				C06E3E371AE6500F00F944A7 /* RAPickerTableView.h */,
 				C06E3E381AE6500F00F944A7 /* RAPickerTableView.m */,
+				C0ABE59D1AE8D941003361D0 /* RAPickerView.h */,
+				C0ABE59E1AE8D941003361D0 /* RAPickerView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -427,6 +432,7 @@
 				C05ACBA71AE790A200947FB7 /* RAXMLParser.m in Sources */,
 				C069BDC91AE679C3000F89F0 /* UIColor+RateApp.m in Sources */,
 				C06E3E301AE64EB600F944A7 /* CalendarViewController.m in Sources */,
+				C0ABE59F1AE8D941003361D0 /* RAPickerView.m in Sources */,
 				C06E3E391AE6500F00F944A7 /* RAPickerTableView.m in Sources */,
 				C06E3E061AE64D3100F944A7 /* main.m in Sources */,
 				C0AE6F681AE823E500B142B7 /* UILabel+CustomFontLabel.m in Sources */,

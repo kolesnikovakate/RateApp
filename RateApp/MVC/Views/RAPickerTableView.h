@@ -7,25 +7,26 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RAPickerTableViewCell.h"
 
 @class RAPickerTableView;
 
-@protocol RAPickerTableViewDataSource < NSObject >
-- (NSUInteger)numberOfRowsInSection:(NSInteger)section pickerTableView:(RAPickerTableView *)pickerTableView;
-- (RAPickerTableViewCell *)pickerTableView:(RAPickerTableView *)pickerTableView cellAtIndexPath:(NSIndexPath *)indexPath;
-@end
-
-@protocol RAPickerTableViewDelegate < NSObject >
+@protocol RAPickerTableViewScrollDelegate < NSObject >
 - (void)scrollViewDidEndDraggingInPickerTableView:(RAPickerTableView *)pickerTableView;
 - (void)scrollViewDidEndDeceleratingInPickerTableView:(RAPickerTableView *)pickerTableView;
 @end
 
-@interface RAPickerTableView : UIView < UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource >
+@protocol RAPickerTableViewDelegate < NSObject >
+- (void)changeSelectedIndexPathRowInPickerTableView:(RAPickerTableView *)pickerTableView;
+@end
 
-@property (nonatomic, strong) UITableView *pickerTableView;
-@property (nonatomic, weak) id <RAPickerTableViewDataSource> dataSource;
-@property (nonatomic, weak) id <RAPickerTableViewDelegate> delegate;
+@interface RAPickerTableView : UITableView < UITableViewDelegate >
+
+- (void)centerCellWithIndexPathRow:(NSUInteger)indexPathRow;
+- (id)initWithFrame:(CGRect)frame pickerRowY:(float)pickerRowY rowHeight:(float)rowHeight;
+
+@property (nonatomic, weak) id <RAPickerTableViewScrollDelegate> scrollDelegate;
+@property (nonatomic, weak) id <RAPickerTableViewDelegate> eventDelegate;
 @property (nonatomic, assign) NSInteger selectedIndexPathRow;
+@property (nonatomic, assign) float pickerRowY;
 
 @end

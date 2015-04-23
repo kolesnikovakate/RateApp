@@ -20,7 +20,7 @@
 
 @implementation CalendarViewController {
     NSArray *_arrDays;
-    RAPickerTableView *_pickerView;
+    RAPickerView *_pickerView;
 }
 
 - (void)viewDidLoad
@@ -39,7 +39,7 @@
     }
     _arrDays = dateArray;
 
-    _pickerView = [[RAPickerTableView alloc] initWithFrame:CGRectZero];
+    _pickerView = [[RAPickerView alloc] initWithFrame:CGRectZero];
     _pickerView.dataSource = self;
     _pickerView.delegate = self;
     _pickerView.selectedIndexPathRow = 0;
@@ -83,15 +83,15 @@
 
 #pragma-mark RAPickerTableViewDataSource
 
-- (NSUInteger)numberOfRowsInSection:(NSInteger)section pickerTableView:(RAPickerTableView *)pickerTableView
+- (NSUInteger)numberOfRowsInSection:(NSInteger)section pickerView:(RAPickerView *)pickerView
 {
     return _arrDays.count;
 }
 
-- (RAPickerTableViewCell *)pickerTableView:(RAPickerTableView *)pickerTableView cellAtIndexPath:(NSIndexPath *)indexPath
+- (RAPickerTableViewCell *)pickerView:(RAPickerView *)pickerView cellAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"RAPickerTableViewCell";
-    RAPickerTableViewCell *cell = (RAPickerTableViewCell *)[pickerTableView.pickerTableView dequeueReusableCellWithIdentifier:CellIdentifier
+    RAPickerTableViewCell *cell = (RAPickerTableViewCell *)[pickerView.pickerTableView dequeueReusableCellWithIdentifier:CellIdentifier
                                                                                                       forIndexPath:indexPath];
     NSDate *date = _arrDays[indexPath.row];
     cell.isSelected = (indexPath.row == _pickerView.selectedIndexPathRow) ?  YES : NO;
@@ -99,7 +99,7 @@
     return cell;
 }
 
-#pragma-mark RAPickerTableViewDelegate
+#pragma mark - RAPickerTableViewScrollDelegate
 
 - (void)scrollViewDidEndDraggingInPickerTableView:(RAPickerTableView *)pickerTableView
 {
