@@ -10,6 +10,8 @@
 #import "UIView+Border.h"
 #import "UIColor+RateApp.h"
 
+static float const ROW_HEIGHT = 30.f;
+
 @implementation RAPickerView {
     CAGradientLayer *_gradientLayerTop;
     CAGradientLayer *_gradientLayerBottom;
@@ -20,15 +22,19 @@
 - (id)initWithFrame:(CGRect)frame
 {
     if(self = [super initWithFrame:frame]) {
-        self.pickerTableView = [[RAPickerTableView alloc] initWithFrame:CGRectZero pickerRowY:_pickerRowY rowHeight:30.f];
-        [self.pickerTableView setBackgroundColor:[UIColor colorRateAppBackgroundApplication]];
-        [self.pickerTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-        self.pickerTableView.dataSource = self;
+        self.pickerDateTableView = [[RAPickerTableView alloc] initWithFrame:CGRectZero pickerRowY:_pickerRowY rowHeight:ROW_HEIGHT];
+        [self.pickerDateTableView setBackgroundColor:[UIColor colorRateAppBackgroundApplication]];
+        [self.pickerDateTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+        self.pickerDateTableView.dataSource = self;
 
-        [self addSubview:self.pickerTableView];
+        [self addSubview:self.pickerDateTableView];
 
-        [self.pickerTableView registerClass:[RAPickerTableViewCell class] forCellReuseIdentifier:@"RAPickerTableViewCell"];
-        [self.pickerTableView registerNib:[UINib nibWithNibName:@"RAPickerTableViewCell" bundle:nil] forCellReuseIdentifier:@"RAPickerTableViewCell"];
+        self.pickerYearTableView = [[RAPickerTableView alloc] initWithFrame:CGRectZero pickerRowY:_pickerRowY rowHeight:ROW_HEIGHT];
+        [self.pickerYearTableView setBackgroundColor:[UIColor colorRateAppBackgroundApplication]];
+        [self.pickerYearTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+        self.pickerYearTableView.dataSource = self;
+
+        [self addSubview:self.pickerYearTableView];
 
         _gradientLayerTop = [CAGradientLayer layer];
         _gradientLayerTop.frame = CGRectMake(0.0, 0.0, self.bounds.size.width, self.bounds.size.height/2.0);
@@ -48,7 +54,8 @@
         _barSel = [[UIView alloc] initWithFrame:CGRectZero];
         [self addSubview:_barSel];
 
-        _selectedIndexPathRow = 0;
+        _selectedDateIndexPathRow = 0;
+        _selectedYearIndexPathRow = 0;
     }
     return self;
 }
@@ -56,21 +63,33 @@
 - (void)setFrame:(CGRect)frame
 {
     [super setFrame:frame];
-    _pickerRowY = self.bounds.size.height/2.0 - self.pickerTableView.rowHeight/2.0;
-    self.pickerTableView.pickerRowY = _pickerRowY;
-    self.pickerTableView.frame = self.bounds;
-    self.pickerTableView.eventDelegate = self;
 
-    [self.pickerTableView setContentInset:UIEdgeInsetsMake(_pickerRowY, 0.0, _pickerRowY, 0.0)];
+    CGSize size = self.bounds.size;
 
-    [_barSel setFrame:CGRectMake(0.0, _pickerRowY, self.frame.size.width, self.pickerTableView.rowHeight)];
+    _pickerRowY = self.bounds.size.height/2.0 - ROW_HEIGHT/2.0;
+    self.pickerDateTableView.pickerRowY = _pickerRowY;
+    self.pickerDateTableView.frame = CGRectMake(self.bounds.origin.x + size.width/2, self.bounds.origin.y,
+               size.width/2, size.height);
+    self.pickerDateTableView.eventDelegate = self;
+
+    [self.pickerDateTableView setContentInset:UIEdgeInsetsMake(_pickerRowY, 0.0, _pickerRowY, 0.0)];
+
+    self.pickerYearTableView.pickerRowY = _pickerRowY;
+    self.pickerYearTableView.frame = CGRectMake(self.bounds.origin.x, self.bounds.origin.y,
+                                                size.width/2, size.height);
+    self.pickerYearTableView.eventDelegate = self;
+
+    [self.pickerYearTableView setContentInset:UIEdgeInsetsMake(_pickerRowY, 0.0, _pickerRowY, 0.0)];
+
+    [_barSel setFrame:CGRectMake(0.0, _pickerRowY, self.frame.size.width, ROW_HEIGHT)];
     [_barSel addBottomBorderWithColor:[UIColor colorRateAppBlue] andWidth:1.f];
     [_barSel addTopBorderWithColor:[UIColor colorRateAppBlue] andWidth:1.f];
 
     _gradientLayerTop.frame = CGRectMake(0.0, 0.0, self.bounds.size.width, self.bounds.size.height/2.0);
     _gradientLayerBottom.frame = CGRectMake(0.0, self.bounds.size.height/2.0, self.bounds.size.width, self.bounds.size.height/2.0);
 
-    [self.pickerTableView centerCellWithIndexPathRow:_selectedIndexPathRow];
+    [self.pickerDateTableView centerCellWithIndexPathRow:_selectedDateIndexPathRow];
+    [self.pickerYearTableView centerCellWithIndexPathRow:_selectedYearIndexPathRow];
 }
 
 #pragma mark - Properties
@@ -79,15 +98,17 @@
 {
     _dataSource = dataSource;
     if (_dataSource) {
-        [self.pickerTableView reloadData];
+        [self.pickerDateTableView reloadData];
+        [self.pickerYearTableView reloadData];
     }
 }
 
-- (void)setDelegate:(id<RAPickerTableViewScrollDelegate>)delegate
+- (void)setScrollDelegate:(id<RAPickerTableViewScrollDelegate>)scrollDelegate
 {
-    _delegate = delegate;
-    if (_delegate) {
-        self.pickerTableView.scrollDelegate = _delegate;
+    _scrollDelegate = scrollDelegate;
+    if (_scrollDelegate) {
+        self.pickerDateTableView.scrollDelegate = _scrollDelegate;
+        self.pickerYearTableView.scrollDelegate = _scrollDelegate;
     }
 }
 
@@ -100,12 +121,20 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.dataSource numberOfRowsInSection:section pickerView:self];
+    if ([tableView isEqual:self.pickerDateTableView]) {
+        return [self.dataSource numberOfRowsInSection:section datePickerView:self];
+    }
+    return [self.dataSource numberOfRowsInSection:section yearPickerView:self];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    RAPickerTableViewCell *cell = [self.dataSource pickerView:self cellAtIndexPath:indexPath];
+    UITableViewCell *cell;
+    if ([tableView isEqual:self.pickerDateTableView]) {
+        cell = [self.dataSource pickerView:self dateCellAtIndexPath:indexPath];
+    } else {
+        cell = [self.dataSource pickerView:self yearCellAtIndexPath:indexPath];
+    }
     return cell;
 }
 
@@ -113,7 +142,12 @@
 
 - (void)changeSelectedIndexPathRowInPickerTableView:(RAPickerTableView *)pickerTableView
 {
-    self.selectedIndexPathRow = self.pickerTableView.selectedIndexPathRow;
+    if ([pickerTableView isEqual:self.pickerDateTableView]) {
+        self.selectedDateIndexPathRow = self.pickerDateTableView.selectedIndexPathRow;
+    } else {
+        self.selectedYearIndexPathRow = self.pickerYearTableView.selectedIndexPathRow;
+        [self.delegate chandedSelectedYearInDatePickerView:self];
+    }
 }
 
 @end

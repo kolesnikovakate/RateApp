@@ -55,7 +55,7 @@
 
     if (self.isSelected) {
         [self setCellTypeid:kRASelectedPickerCellTypeid];
-        [formatter setDateFormat:@"yyyy MMM"];
+        [formatter setDateFormat:@"MMM"];
     } else {
         [date checkForFirstDayInMonth] ? [formatter setDateFormat:@"MMM"] : [formatter setDateFormat:@""];
         [date checkForWeekend] ? [self setCellTypeid:kRAWeekendPickerCellTypeid] : [self setCellTypeid:kRAWeekdayPickerCellTypeid];

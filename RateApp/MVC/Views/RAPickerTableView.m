@@ -8,6 +8,7 @@
 
 #import "RAPickerTableView.h"
 #import "RAPickerTableViewCell.h"
+#import "RAPickerTableViewYearCell.h"
 
 @implementation RAPickerTableView
 
@@ -17,6 +18,8 @@
 
         [self registerClass:[RAPickerTableViewCell class] forCellReuseIdentifier:@"RAPickerTableViewCell"];
         [self registerNib:[UINib nibWithNibName:@"RAPickerTableViewCell" bundle:nil] forCellReuseIdentifier:@"RAPickerTableViewCell"];
+
+        [self registerClass:[RAPickerTableViewYearCell class] forCellReuseIdentifier:@"RAPickerTableViewYearCell"];
 
         [self setScrollEnabled:YES];
         self.rowHeight = rowHeight;
@@ -58,6 +61,7 @@
 {
     NSInteger lastSelectedIndexPathRow = _selectedIndexPathRow;
     _selectedIndexPathRow = -1;
+    [self.eventDelegate changeSelectedIndexPathRowInPickerTableView:self];
     [self reloadCellWithIndexPathRow:lastSelectedIndexPathRow];
 }
 

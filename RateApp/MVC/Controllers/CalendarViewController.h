@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "RAPickerView.h"
 
-@interface CalendarViewController : UIViewController < RAPickerViewDataSource, RAPickerTableViewScrollDelegate >
+@interface CalendarViewController : UIViewController < RAPickerViewDataSource, RAPickerViewDelegate, RAPickerTableViewScrollDelegate >
 
 
 @end

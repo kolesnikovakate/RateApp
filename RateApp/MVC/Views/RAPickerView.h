@@ -9,19 +9,29 @@
 #import <UIKit/UIKit.h>
 #import "RAPickerTableViewCell.h"
 #import "RAPickerTableView.h"
+#import "RAPickerTableViewYearCell.h"
 
 @class RAPickerView;
 
 @protocol RAPickerViewDataSource < NSObject >
-- (NSUInteger)numberOfRowsInSection:(NSInteger)section pickerView:(RAPickerView *)pickerView;
-- (RAPickerTableViewCell *)pickerView:(RAPickerView *)pickerView cellAtIndexPath:(NSIndexPath *)indexPath;
+- (NSUInteger)numberOfRowsInSection:(NSInteger)section datePickerView:(RAPickerView *)pickerView;
+- (NSUInteger)numberOfRowsInSection:(NSInteger)section yearPickerView:(RAPickerView *)pickerView;
+- (RAPickerTableViewCell *)pickerView:(RAPickerView *)pickerView dateCellAtIndexPath:(NSIndexPath *)indexPath;
+- (RAPickerTableViewYearCell *)pickerView:(RAPickerView *)pickerView yearCellAtIndexPath:(NSIndexPath *)indexPath;
 @end
 
-@interface RAPickerView : UIView < UITableViewDataSource, RAPickerTableViewScrollDelegate, RAPickerTableViewDelegate >
+@protocol RAPickerViewDelegate < NSObject >
+- (void)chandedSelectedYearInDatePickerView:(RAPickerView *)pickerView;
+@end
 
-@property (nonatomic, strong) RAPickerTableView *pickerTableView;
+@interface RAPickerView : UIView < UITableViewDataSource, RAPickerTableViewDelegate >
+
+@property (nonatomic, strong) RAPickerTableView *pickerYearTableView;
+@property (nonatomic, strong) RAPickerTableView *pickerDateTableView;
 @property (nonatomic, weak) id <RAPickerViewDataSource> dataSource;
-@property (nonatomic, weak) id <RAPickerTableViewScrollDelegate> delegate;
-@property (nonatomic, assign) NSInteger selectedIndexPathRow;
+@property (nonatomic, weak) id <RAPickerViewDelegate> delegate;
+@property (nonatomic, weak) id <RAPickerTableViewScrollDelegate> scrollDelegate;
+@property (nonatomic, assign) NSInteger selectedYearIndexPathRow;
+@property (nonatomic, assign) NSInteger selectedDateIndexPathRow;
 
 @end

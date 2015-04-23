@@ -20,6 +20,8 @@
 
 @implementation CalendarViewController {
     NSArray *_arrDays;
+    NSArray *_arrYears;
+    NSArray *_currentArrDays;
     RAPickerView *_pickerView;
 }
 
@@ -27,22 +29,32 @@
 {
     [super viewDidLoad];
 
-    NSMutableArray * dateArray = [NSMutableArray array];
-    NSCalendar * cal = [NSCalendar currentCalendar];
-    NSDateComponents *startComponents = [[NSDateComponents alloc] init];
-    [startComponents setDay:1];
-    [startComponents setYear:2013];
+    NSMutableArray *arrDays = [NSMutableArray array];
+    NSMutableArray *arrYears = [NSMutableArray array];
+    for (NSUInteger year = 2004; year <= 2014; year++) {
+        [arrYears addObject:@(year)];
+        NSMutableArray * dateArray = [NSMutableArray array];
+        NSCalendar * cal = [NSCalendar currentCalendar];
+        NSDateComponents *startComponents = [[NSDateComponents alloc] init];
+        [startComponents setDay:1];
+        [startComponents setYear:year];
 
-    for(NSUInteger day = 1; day <= 365; day++) {
-        [startComponents setDay:day];
-        [dateArray addObject:[cal dateFromComponents:startComponents]];
+        for(NSUInteger day = 1; day <= 365; day++) {
+            [startComponents setDay:day];
+            [dateArray addObject:[cal dateFromComponents:startComponents]];
+        }
+        [arrDays addObject:dateArray];
     }
-    _arrDays = dateArray;
+    _arrDays = [NSArray arrayWithArray:arrDays];
+    _arrYears = [NSArray arrayWithArray:arrYears];
+
+    _currentArrDays = _arrDays[0];
 
     _pickerView = [[RAPickerView alloc] initWithFrame:CGRectZero];
     _pickerView.dataSource = self;
     _pickerView.delegate = self;
-    _pickerView.selectedIndexPathRow = 0;
+    _pickerView.scrollDelegate = self;
+    _pickerView.selectedDateIndexPathRow = 0;
 
     [self.view addSubview:_pickerView];
 
@@ -77,25 +89,40 @@
 {
     if ([segue.identifier isEqualToString:@"ShowRate"]) {
         RateViewController *destVC = (RateViewController *)segue.destinationViewController;
-        destVC.selectedDate = _arrDays[_pickerView.selectedIndexPathRow];
+        destVC.selectedDate = _currentArrDays[_pickerView.selectedDateIndexPathRow];
     }
 }
 
 #pragma-mark RAPickerTableViewDataSource
 
-- (NSUInteger)numberOfRowsInSection:(NSInteger)section pickerView:(RAPickerView *)pickerView
+- (NSUInteger)numberOfRowsInSection:(NSInteger)section datePickerView:(RAPickerView *)pickerView
 {
-    return _arrDays.count;
+    return [_currentArrDays count];
 }
 
-- (RAPickerTableViewCell *)pickerView:(RAPickerView *)pickerView cellAtIndexPath:(NSIndexPath *)indexPath
+- (NSUInteger)numberOfRowsInSection:(NSInteger)section yearPickerView:(RAPickerView *)pickerView
+{
+    return _arrYears.count;
+}
+
+- (RAPickerTableViewCell *)pickerView:(RAPickerView *)pickerView dateCellAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"RAPickerTableViewCell";
-    RAPickerTableViewCell *cell = (RAPickerTableViewCell *)[pickerView.pickerTableView dequeueReusableCellWithIdentifier:CellIdentifier
+    RAPickerTableViewCell *cell = (RAPickerTableViewCell *)[pickerView.pickerDateTableView dequeueReusableCellWithIdentifier:CellIdentifier
                                                                                                       forIndexPath:indexPath];
-    NSDate *date = _arrDays[indexPath.row];
-    cell.isSelected = (indexPath.row == _pickerView.selectedIndexPathRow) ?  YES : NO;
+    NSDate *date = _currentArrDays[indexPath.row];
+    cell.isSelected = (indexPath.row == _pickerView.selectedDateIndexPathRow) ?  YES : NO;
     [cell setDate:date];
+    return cell;
+}
+
+- (RAPickerTableViewYearCell *)pickerView:(RAPickerView *)pickerView yearCellAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"RAPickerTableViewYearCell";
+    RAPickerTableViewYearCell *cell = (RAPickerTableViewYearCell *)[pickerView.pickerDateTableView dequeueReusableCellWithIdentifier:CellIdentifier
+                                                                                                                forIndexPath:indexPath];
+    cell.isSelected = (indexPath.row == _pickerView.selectedYearIndexPathRow) ?  YES : NO;
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", _arrYears[indexPath.row]];
     return cell;
 }
 
@@ -111,6 +138,17 @@
 {
     self.rateButton.enabled = YES;
     self.rateButton.layer.borderColor = [UIColor colorRateAppBlue].CGColor;
+}
+
+#pragma mark - RAPickerTableViewScrollDelegate
+
+-(void)chandedSelectedYearInDatePickerView:(RAPickerView *)pickerView
+{
+    NSInteger i = pickerView.selectedYearIndexPathRow;
+    if(i < _arrDays.count && i >= 0 ) {
+    _currentArrDays = _arrDays[i];
+    [pickerView.pickerDateTableView reloadData];
+    }
 }
 
 @end
