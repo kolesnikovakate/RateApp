@@ -43,13 +43,19 @@
 {
     currentElement = [elementName lowercaseString];
     if ([elementName isEqualToString:@"Valute"]) {
-        currency = [[Currency alloc] init];
+        NSString *valuteId = [attributeDict objectForKey:@"ID"];
+       if ([valuteId isEqualToString:kRAEURValuteID] || [valuteId isEqualToString:kRAUSDValuteID]) {
+            currency = [[Currency alloc] init];
+            isNecessaryElement = YES;
+        } else {
+            isNecessaryElement = NO;
+        }
     }
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
-    if ([elementName isEqualToString:@"Valute"]) {
+    if ([elementName isEqualToString:@"Valute"] && isNecessaryElement) {
         [currency_array addObject:currency];
     }
 }
@@ -59,22 +65,24 @@
     if([string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length<1)
         return;
 
-    if ([currentElement isEqualToString:@"numcode"])  {
-        currency.numCode = string;
-    } else if ([currentElement isEqualToString:@"charcode"])  {
-        currency.charCode = string;
-    } else if ([currentElement isEqualToString:@"nominal"])  {
-        currency.nominal = string;
-    } else if ([currentElement isEqualToString:@"name"])  {
-        currency.name = string;
-    } else if ([currentElement isEqualToString:@"value"])  {
-        NSCharacterSet * charset = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
-        string = [string stringByReplacingOccurrencesOfString:@"," withString:@"."];
-        NSScanner * scanner = [NSScanner scannerWithString:string];
-        [scanner setCharactersToBeSkipped:charset];
-        float f;
-        [scanner scanFloat:&f];
-        currency.value = [NSNumber numberWithFloat:f];
+    if (isNecessaryElement) {
+        if ([currentElement isEqualToString:@"charcode"])  {
+            currency.charCode = string;
+        } else if ([currentElement isEqualToString:@"numcode"])  {
+            currency.numCode = string;
+        } else if ([currentElement isEqualToString:@"nominal"])  {
+            currency.nominal = string;
+        } else if ([currentElement isEqualToString:@"name"])  {
+            currency.name = string;
+        } else if ([currentElement isEqualToString:@"value"])  {
+            NSCharacterSet * charset = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+            string = [string stringByReplacingOccurrencesOfString:@"," withString:@"."];
+            NSScanner * scanner = [NSScanner scannerWithString:string];
+            [scanner setCharactersToBeSkipped:charset];
+            float f;
+            [scanner scanFloat:&f];
+            currency.value = [NSNumber numberWithFloat:f];
+        }
     }
 }
 

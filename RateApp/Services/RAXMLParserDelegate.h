@@ -14,6 +14,7 @@
     NSError *parserError;
     NSMutableArray *currency_array;
     NSString *currentElement;
+    BOOL isNecessaryElement;
     Currency *currency;
 }
 

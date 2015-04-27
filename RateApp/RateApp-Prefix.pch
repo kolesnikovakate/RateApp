@@ -12,4 +12,8 @@
 #define kRAUSDCharCode @"USD"
 #define kRAEURCharCode @"EUR"
 
+#define kRAUSDValuteID @"R01235"
+#define kRAEURValuteID @"R01239"
+
+
 #endif
